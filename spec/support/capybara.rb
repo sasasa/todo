@@ -9,7 +9,8 @@ RSpec.configure do |config|
     # driven_by :selenium_chrome_headless
     # driven_by :selenium_chrome
     
-    driven_by :selenium, using: :chrome, screen_size: [1200, 1080]
+    # driven_by :selenium, using: :chrome, screen_size: [1200, 1080]
+    driven_by :selenium, using: :headless_chrome, screen_size: [1200, 1080]
     # driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1080]
   end
 
