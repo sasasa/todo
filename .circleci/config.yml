@@ -2,18 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.2-node-browsers
+      - image: circleci/ruby:2.6.3-node-browsers
     working_directory: ~/rails-5-2-sandbox
     steps:
       - checkout
       - run:
           name: Install System Dependencies
           command: |
-            sudo apt-get update
-            sudo apt-get install -y libappindicator1 fonts-liberation
-            export CHROME_BIN=/usr/bin/google-chrome
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome*.deb
+            curl https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt update
+            sudo apt install google-chrome-stable
 
       - restore_cache:
           keys:
