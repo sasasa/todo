@@ -1,0 +1,27 @@
+en:
+  problem: "There is a problem with the input."
+  edit: "Edit"
+  back: "back"
+  create: "create new"
+  list: "list"
+  layouts:
+    application:
+      user_edit: "user edit"
+      admin_edit: "admin edit"
+      user_image_edit:  "user image edit"
+      logout: "logout"
+  tasks:
+    index:
+      register_task: "Register the task."
+  users:
+    index:
+      users_index: "user list"
+    edit:
+      user_image_upload: "Image upload"
+  tasks_controller:
+    create:
+      notice: '%{model} has been created.'
+    update:
+      notice: '%{model} has been updated.'
+    destroy:
+      notice: '%{model} was successfully destroyed.'

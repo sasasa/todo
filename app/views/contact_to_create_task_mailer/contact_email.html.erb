@@ -1,0 +1,9 @@
+<p>こんにちは<%= @admin.email %>様</p>
+<p>以下のタスクが追加されました。</p>
+
+<ul>
+<li>ユーザ名：<%= @task.user.name %></li>
+<li>ユーザアドレス：<%= @task.user.email %></li>
+<li>タスク内容：<%= @task.content %></li>
+<li>タスク期日：<%= @task.due_on %></li>
+</ul>

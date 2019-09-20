@@ -1,0 +1,11 @@
+<h1><%= t(".user_image_upload") %></h1>
+<% if @user.image && @user.image.attached? %>
+  <%# 長辺を200pxにしてリサイズ %>
+  <%= image_tag @user.image.variant(resize: "200x200").processed %>
+  <%# W:200 H:200にクロップされた画像 %>
+  <%= image_tag @user.image.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed %>
+<% end %>
+<%= form_with model: @user, local: true do |form| %>
+  <p><%= form.file_field :image %></p>
+  <p><%= form.submit %></p>
+<% end %>

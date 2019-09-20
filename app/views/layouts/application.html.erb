@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h2>
+          <% if user_signed_in? %>
+            <%= link_to "TodoApp", root_path %>
+          <% elsif admin_signed_in? %>
+            <%= link_to "TodoApp", users_path %>
+          <% end %>
+        </h2>
+
+        <% if notice %>
+          <p id="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p id="alert"><%= alert %></p>
+        <% end %>
+        <% if user_signed_in? %>
+          <nav>
+            <ul>
+              <li><%= current_user.last_sign_in_ip %></li>
+              <li><%= current_user.location %></li>
+              <% if current_page?(edit_user_path(current_user)) %>
+                <li><%= t(".user_image_edit") %></li>
+              <% else %>
+                <li><%= link_to t(".user_image_edit"), edit_user_path(current_user) %></li>
+              <% end %>
+              <% if current_page?(edit_user_registration_path) %>
+                <li><%= t(".user_edit") %></li>
+              <% else %>
+                <li><%= link_to t(".user_edit"), edit_user_registration_path %></li>
+              <% end %>
+              <li>
+                <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </nav>
+        <% elsif admin_signed_in? %>
+          <nav>
+            <ul>
+              <% if current_page?(edit_admin_registration_path) %>
+                <li><%= t(".admin_edit") %></li>
+              <% else %>
+                <li><%= link_to t(".admin_edit"), edit_admin_registration_path %></li>
+              <% end %>
+              <li>
+                <%= link_to t(".logout"), destroy_admin_session_path, method: :delete %>
+              </li>
+            </ul>
+          </nav>
+        <% end %>
+      </header>
+      <aside>
+        <%= yield :sidebar %>
+      </aside>
+      <main>
+        <%= yield %>
+      </main>
+      <footer>
+        Copyright © 2019<%= (y = Time.now.year) == 2019 ? "" : "-#{y}" %> saeki. All Rights Reserved.
+      </footer>
+    </div>
+  </body>
+</html>

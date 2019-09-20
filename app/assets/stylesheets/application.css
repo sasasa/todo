@@ -1,0 +1,125 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  color: #666;
+}
+input {
+  padding: 5px;
+}
+
+.container {
+  width: 70%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template: 
+    "head    head head" 1fr
+    "sidebar main main" auto
+    "foot    foot foot" 1fr /
+    200px 700px 100px;
+  row-gap: 40px;
+}
+header {
+  grid-area: head;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #666;
+}
+header h2 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+header h2 a {
+  line-height: 60px;
+  display: block;
+  text-decoration: none;
+}
+header ul {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+}
+header ul li {
+  margin-right: 10px;
+}
+h1 {
+  font-size: 18px;
+}
+aside {
+  grid-area: sidebar;
+  /* border-top: 1px dotted #666;
+  border-bottom: 1px dotted #666; */
+  padding: 20px;
+}
+aside h2 {
+  font-size: 20px;
+}
+aside ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+main {
+  /* border-top: 1px dotted #666;
+  border-bottom: 1px dotted #666; */
+  grid-area: main;
+  display: block;
+  margin: 0 auto;
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+main table{
+  margin: 0 auto;
+  width: 50%;
+}
+main th {
+  text-align: left;
+}
+main form {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+main img {
+  display: block;
+  margin: 0 auto;
+}
+main .btn-square {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 3px #627295;
+  border-radius: 3px;
+}
+.btn-square:active {
+  transform: translateY(3px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+footer {
+  border-top: 1px dotted #666;
+  grid-area: foot;
+  text-align: center;
+  padding-top: 10px;
+}
+.cmd {
+  margin-left: 8px;
+}

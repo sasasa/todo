@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+        task:
+          id: ID
+          content: 内容
+          finished: 終了済

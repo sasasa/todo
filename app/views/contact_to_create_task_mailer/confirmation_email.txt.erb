@@ -1,0 +1,7 @@
+こんにちは<%= @task.user.name? ? @task.user.name : @task.user.email %>様
+以下のタスクが追加されました。
+
+ユーザ名：<%= @task.user.name %>
+ユーザアドレス：<%= @task.user.email %>
+タスク内容：<%= @task.content %>
+タスク期日：<%= @task.due_on %>

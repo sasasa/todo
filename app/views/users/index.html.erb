@@ -1,0 +1,37 @@
+<% content_for :sidebar do %>
+<h2><%= t(".users_index") %></h2>
+<ul>
+<% @users.each do |user| %>
+  <li><%= link_to user.email_first_half, users_path(user_id: user.id) %></li>
+<% end %>
+</ul>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%=Task.human_attribute_name :content %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%if @user %>
+    <% @user.tasks.each do |task| %>
+      <tr>
+        <% if task.finished %>
+          <td><s><%= task.content %></s></td>
+        <% else %>
+          <td><%= task.content %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%if @user %>
+<% if @user.image && @user.image.attached? %>
+  <%# 長辺を200pxにしてリサイズ %>
+  <%= image_tag @user.image.variant(resize: "200x200").processed %>
+  <%# W:200 H:200にクロップされた画像 %>
+  <%= image_tag @user.image.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed %>
+<% end %>
+<% end %>

@@ -1,0 +1,27 @@
+ja:
+  problem: "入力に問題があります。"
+  edit: "編集"
+  back: "戻る"
+  create: "新規作成"
+  list: "一覧"
+  layouts:
+    application:
+      user_edit: "ユーザ編集"
+      admin_edit: "管理ユーザ編集"
+      user_image_edit:  "画像編集"
+      logout: "ログアウト"
+  tasks:
+    index:
+      register_task: "タスクを登録してください。"
+  users:
+    index:
+      users_index: "ユーザ一覧"
+    edit:
+      user_image_upload: "画像アップロード"
+  tasks_controller:
+    create:
+      notice: '%{model}が作成されました。'
+    update:
+      notice: '%{model}は更新されました。'
+    destroy:
+      notice: '%{model}は削除されました。'

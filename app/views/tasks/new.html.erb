@@ -1,0 +1,5 @@
+<h1><%= Task.model_name.human %> <%=t(:create)%></h1>
+
+<%= render 'form', task: @task %>
+
+<%= link_to t(:back), tasks_path, class: "btn-square" %>
