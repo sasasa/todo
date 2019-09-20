@@ -18,14 +18,6 @@ RSpec.describe Task, type: :model do
     expect(ContactToCreateTaskMailer).to have_received(:confirmation_email).with(task)
   end
 
-  it "大量のデータを読み込む" do
-    skip "今後不要なのでスキップ"
-    10000000000000.times {
-      task = Task.new
-      expect(task.user_name).to eq "Fake User"     
-    }
-  end
-
   it "名前の取得をユーザに移譲する1" do
     user = FactoryBot.create(:user, first_name: "Fake", last_name: "User")
     task = Task.new(user: user)

@@ -7,5 +7,6 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.default_cassette_options = { re_record_interval: 2.days }
   config.filter_sensitive_data('<PASSWORD>') { '<-------->' }
+  # config.debug_logger = $stdout
 end
 

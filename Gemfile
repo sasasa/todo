@@ -58,6 +58,8 @@ group :test do
   # gem 'capybara', '>= 2.15'
   gem 'capybara'
   # gem 'selenium-webdriver'
+
+  # wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip && sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/; sudo chmod +x /usr/local/bin/chromedriver;
   gem 'webdrivers'
   gem 'launchy'
   # Easy installation and use of chromedriver to run system tests with Chrome

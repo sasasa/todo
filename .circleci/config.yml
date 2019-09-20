@@ -13,6 +13,9 @@ jobs:
             echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
             sudo apt update
             sudo apt install google-chrome-stable
+            wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
+            sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver;
 
       - restore_cache:
           keys:
