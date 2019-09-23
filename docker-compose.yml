@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgdatavol:/var/lib/postgresql/data
+  chrome:
+    image: selenium/standalone-chrome:3.141.59
+    ports:
+      - 4444:4444
+  backend: &backend
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/myapp
+      - bundle:/usr/local/bundle
+    depends_on:
+      - db
+      - chrome
+  delayed_job:
+    <<: *backend
+    command: bundle exec rails jobs:work
+  web:
+    <<: *backend
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+volumes:
+  pgdatavol:
+  bundle:

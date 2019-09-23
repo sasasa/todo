@@ -4,7 +4,7 @@ RSpec.feature "Tasks", type: :system do
   include ActiveJob::TestHelper # perform_enqueued_jobsが使える
 
   def goto_update_task(task_content)
-    visit root_path
+    visit root_path(locale: :ja)
     expect(page).to have_content task_content
     click_link task_content
     click_link "編集"
@@ -62,7 +62,7 @@ RSpec.feature "Tasks", type: :system do
     }
   end
 
-  scenario "ユーザーがタスクを削除する", js: true, vcr: true do
+  scenario "ユーザーがタスクを削除する", js: true do
     user = FactoryBot.create(:user, :with_tasks)
 
     sign_in user
@@ -70,7 +70,6 @@ RSpec.feature "Tasks", type: :system do
     goto_update_task "Test1 Content"
     complete_task
     expect_complete_task "Test1 Content"
-
     find('strike ~ a.cmd').click
     expect(page.driver.browser.switch_to.alert.text).to eq "本当に削除しますか？"
     page.driver.browser.switch_to.alert.accept

@@ -14,19 +14,18 @@ RSpec.feature "Users", type: :system do
     
   end
 
-  unless Gem.win_platform?
-    scenario "ユーザーが添付ファイルをアップロードする" do
-      user = FactoryBot.create(:user, :with_tasks)
-  
-      sign_in user
-      goto_image
-      expect(page).to_not have_css('main img')
-      attach_file "user_image", "#{Rails.root}/spec/files/attachment.jpg"
-      click_button "更新する"
-      aggregate_failures do
-        expect(page).to have_content "画像をアップロードしました。"
-        expect(page).to have_css('main img')
-      end
+
+  scenario "ユーザーが添付ファイルをアップロードする" do
+    user = FactoryBot.create(:user, :with_tasks)
+
+    sign_in user
+    goto_image
+    expect(page).to_not have_css('main img')
+    attach_file "user_image", "#{Rails.root}/spec/files/attachment.jpg"
+    click_button "更新する"
+    aggregate_failures do
+      expect(page).to have_content "画像をアップロードしました。"
+      expect(page).to have_css('main img')
     end
   end
 
