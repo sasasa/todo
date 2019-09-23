@@ -4,6 +4,8 @@ services:
     image: postgres
     volumes:
       - pgdatavol:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
   chrome:
     image: selenium/standalone-chrome:3.141.59
     ports:
