@@ -91,4 +91,4 @@ gem 'image_processing', '~> 1.2'
 gem 'geocoder'
 gem 'delayed_job_active_record'
 gem 'exception_notification'
-
+gem 'dotenv-rails'
