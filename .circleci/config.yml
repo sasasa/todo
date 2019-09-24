@@ -41,14 +41,15 @@ jobs:
                               --out /tmp/test_results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-    - run:
-        name: Setup Heroku
-        command: bash .circleci/setup-heroku.sh
-    - run:
-        command: |
-          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/sasasa-todo.git HEAD:refs/heads/master
-          sleep 5  # sleep for 5 seconds to wait for dynos
-          heroku restart --app sasasa-todo
+      - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh
+      - run:
+          name: Push Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/sasasa-todo.git HEAD:refs/heads/master
+            sleep 5  # sleep for 5 seconds to wait for dynos
+            heroku restart --app sasasa-todo
 
       - store_test_results:
           path: /tmp/test-results
