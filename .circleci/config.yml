@@ -16,7 +16,6 @@ jobs:
             wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
             sudo unzip -o /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver;
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -30,17 +29,17 @@ jobs:
           paths:
             - vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
       - run:
           name: Create DB
           command: bundle exec rake db:create db:schema:load --trace
-      - type: shell
+      - run:
+          name: Run rspec in parallel
           command: |
             bundle exec rspec --profile 10 \
-              --format RspecJunitFormatter \
-              --out test_results/rspec.xml \
-              --format progress \
-              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
