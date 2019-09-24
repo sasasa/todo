@@ -5,7 +5,7 @@ Capybara.server_host = Socket.ip_address_list.detect{|addr| addr.ipv4_private?}.
 Capybara.server_port = 3001
 
 Capybara.register_driver :selenium_remote do |app|
-  url = "http://chrome:4444/wd/hub"
+  url = ENV.fetch('SELENIUM_DRIVER_URL')
   opts = { desired_capabilities: :chrome, browser: :remote, url: url }
   driver = Capybara::Selenium::Driver.new(app, opts)
 end
