@@ -55,10 +55,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker', require: false
-  
+
 end
 
 group :test do
+  gem 'rspec_junit_formatter'
   # Adds support for Capybara system testing and selenium driver
   # gem 'capybara', '>= 2.15'
   gem 'capybara'
