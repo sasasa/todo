@@ -3,16 +3,13 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
+      - image: selenium/standalone-chrome:3.141.59
     working_directory: ~/rails-5-2-sandbox
     steps:
       - checkout
       - run:
           name: Install System Dependencies
           command: |
-            curl https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-            sudo apt update
-            sudo apt install google-chrome-stable
             wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
             sudo unzip -o /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver;
@@ -35,6 +32,7 @@ jobs:
       - run:
           name: Run rspec in parallel
           command: |
+            mkdir /tmp/test-results
             bundle exec rspec --profile 10 \
                               --format RspecJunitFormatter \
                               --out test_results/rspec.xml \
