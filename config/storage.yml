@@ -11,8 +11,10 @@ amazon:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: ap-northeast-1 #東京の場合
-  bucket: sasasa-todo #自分で作成したS3のバケットの名前
+  region: ap-northeast-1
+  #東京の場合
+  bucket: sasasa-todo
+  #自分で作成したS3のバケットの名前
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
