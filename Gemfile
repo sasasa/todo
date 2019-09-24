@@ -92,3 +92,4 @@ gem 'geocoder'
 gem 'delayed_job_active_record'
 gem 'exception_notification'
 gem 'dotenv-rails'
+gem "aws-sdk-s3", require: false
