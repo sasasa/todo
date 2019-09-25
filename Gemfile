@@ -75,6 +75,7 @@ group :test do
     branch: 'rails-5'
   gem 'vcr'
   gem 'webmock'
+  gem 'simplecov', require: false
 end
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
