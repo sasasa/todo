@@ -8,7 +8,7 @@ RSpec.describe Task, type: :model do
     admin = FactoryBot.create(:admin)
     user = FactoryBot.create(:user)
     task = FactoryBot.create(:task, user: user)
-    expect(ContactToCreateTaskMailer).to_not have_received(:contact_email).with(task, admin)
+    expect(ContactToCreateTaskMailer).to have_received(:contact_email).with(task, admin)
   end
 
   it "タスクが作成されたときユーザーあてにメールを送信する" do
