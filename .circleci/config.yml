@@ -6,7 +6,10 @@ jobs:
         environment:
           RAILS_ENV: test
           SELENIUM_DRIVER_URL: http://localhost:4444/wd/hub
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
       - image: selenium/standalone-chrome:3.141.59
+        environment:
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
     working_directory: ~/rails-5-2-sandbox
     steps:
       - checkout
@@ -38,7 +41,7 @@ jobs:
             mkdir /tmp/test-results
             bundle exec rspec --profile 10 \
                               --format RspecJunitFormatter \
-                              --out /tmp/test_results/rspec.xml \
+                              --out /tmp/test-results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run:
