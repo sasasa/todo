@@ -4,10 +4,10 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
-          CIRCLE_ARTIFACTS: /tmp/test-results
           RAILS_ENV: test
           SELENIUM_DRIVER_URL: http://localhost:4444/wd/hub
           TZ: /usr/share/zoneinfo/Asia/Tokyo
+          CIRCLE_ARTIFACTS: /tmp/test-results
       - image: selenium/standalone-chrome:3.141.59
         environment:
           TZ: /usr/share/zoneinfo/Asia/Tokyo
@@ -42,7 +42,7 @@ jobs:
             mkdir /tmp/test-results
             bundle exec rspec --profile 10 \
                               --format RspecJunitFormatter \
-                              --out $CIRCLE_ARTIFACTS/rspec.xml \
+                              --out /tmp/test-results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run:
@@ -62,9 +62,9 @@ jobs:
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}
 
       - store_test_results:
-          path: $CIRCLE_ARTIFACTS
+          path: /tmp/test-results
       - store_artifacts:
-          path: $CIRCLE_ARTIFACTS
+          path: /tmp/test-results
           destination: test-results
 
 
