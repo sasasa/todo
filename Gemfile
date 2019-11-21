@@ -96,3 +96,6 @@ gem 'delayed_job_active_record'
 gem 'exception_notification'
 gem 'dotenv-rails'
 gem "aws-sdk-s3", require: false
+
+gem "rubyzip", ">= 1.3.0"
+gem "loofah", ">= 2.3.1"
