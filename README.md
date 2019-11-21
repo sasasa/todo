@@ -2,6 +2,8 @@ rails g migration AddDueOnToTasks due_on:date
 bin/rspec --tag ~slow
 bin/rspec --tag focus
 
+動かすためには .env と master.key と .rspec が別途必要
+
 
 # README
 

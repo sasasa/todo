@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.4
 
 # RUN apt-get update -qq && apt-get install -y sudo
 
@@ -13,8 +13,9 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 # RUN curl https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 # RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev postgresql-client nodejs yarn sqlite3 libsqlite3-dev imagemagick
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev postgresql-client nodejs yarn sqlite3 libsqlite3-dev imagemagick vim
 # zip unzip sudo google-chrome-stable vim
+# EDITOR="vi" rails credentials:edit のためにはvimが必要
 
 # RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
 # RUN sudo unzip -o /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
