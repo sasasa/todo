@@ -1,8 +1,9 @@
+# rails g delayed_job:active_record
 # 開発環境
-# rake jobs:check[max_age]  # max_age秒より古いジョブがまだ試行されていない場合、エラーステータスで終了します
-# rake jobs:clear           # Delayed Job のキューをクリアな状態にする
-# rake jobs:work            # Delayed Job ワーカーを起動させる
-# rake jobs:workoff         # Delayed Job ワーカーを起動させ、すべてのジョブが完了したら終了する
+# rails jobs:check[max_age]  # max_age秒より古いジョブがまだ試行されていない場合、エラーステータスで終了します
+# rails jobs:clear           # Delayed Job のキューをクリアな状態にする
+# rails jobs:work            # Delayed Job ワーカーを起動させる
+# rails jobs:workoff         # Delayed Job ワーカーを起動させ、すべてのジョブが完了したら終了する
 
 # 本番環境
 # 別々のプロセス内で2つのワーカーを走らせる
