@@ -130,7 +130,7 @@ GEM
       i18n (>= 1.6, < 1.8)
     ffi (1.11.2)
     ffi (1.11.2-x64-mingw32)
-    geocoder (1.5.2)
+    geocoder (1.6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (1.0.0)
